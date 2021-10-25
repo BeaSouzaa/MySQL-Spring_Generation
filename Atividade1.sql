@@ -19,7 +19,7 @@ cargo varchar(20) not null,
 salário float(12),
 primary key(id_funcionarie)
 							 );
-insert into tb_funcionaries (nome, email, cargo, salário) values ("Júlia" , "emaildajulia@gmail.com", "Gerente de RH", 3200.00);
+insert into tb_funcionaries (nome, email, cargo, salário) values ("Maria" , "emaildajulia@gmail.com", "Gerente de RH", 3200.00);
 insert into tb_funcionaries (nome, email, cargo, salário) values ("Mahalla", "emaildamahalla@gmail.com", "Diretora", 4500.00);
 insert into tb_funcionaries (nome, email, cargo, salário) values ("Camila", "emaildacamila@gmail.com", "Auxiliar de RH", 2000.00);
 insert into tb_funcionaries (nome, email, cargo, salário) values ("Boen", "emaildaboen@gmail,com", "Tester", 1710.00);
