@@ -69,11 +69,15 @@ fk_classe bigint(4),
 	select * from tb_categoria inner join tb_pizza  													##junta as tabelas com o inner join 
 	on tb_categoria.id_categoria = tb_pizza.fk_classe;
     
-    select adicional from tb_pizza where adicional = "Sem adicional";									##seleciona o valor dentro do cammpo igual ao que está determinado
-    
+    								
+    									
+    													
+	select * from tb_categoria inner join tb_pizza																									 ##pega a categoria em uma e relaciona com a outra
+    on tb_categoria.id_categoria = tb_pizza.fk_classe 																								 ##seleciona o valor dentro do cammpo igual ao que está determinado
+    where tb_categoria.variedade = "Tradicional";
                          
 		
                       
                    
-##|||||||||||||||||||||||||||||||||||||PRECISO DE COLOCAR A ÚLTIMA PARTE||||||||||||||||||||||||||||||||||||||
+
 
