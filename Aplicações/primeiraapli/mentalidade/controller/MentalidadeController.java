@@ -12,11 +12,11 @@ public class MentalidadeController {
 	@GetMapping
 	public String ment() {
 		return "Mentalidades para o bloco II na sessão de Spring: " +
-		"\n" + 
+		"<br>" + 
 		" Persistência: Ser a persistência não superamos os erros" +
-		"\n" + 
+		"<br>" + 
 		"Atenção aos detalhes: No Spring há MUITOS detalhes" +
-		"\n" +
+		"<br>" +
 		"||| VIVER NUNCA FOI PARA AMADOR ||| " +
 		"||| CONFIE NO PROCESSO |||";
 		
