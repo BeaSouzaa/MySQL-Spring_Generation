@@ -9,26 +9,31 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 
 
-//Anotações são parametros onde definimos o comportamento que acontece dentro da classe.
+//@ Anotações são parametros onde definimos o comportamento que acontece dentro da classe.
 
 
-@Entity  								//Uma entidade do JPA que mostra que a classe será mapeada como tabela	
-@Table (name = "postagem")				//A entidade vai virar uma tabela 
+@Entity  										//Uma entidade do JPA que mostra que a classe será mapeada como tabela	
+@Table (name = "postagem")						//A entidade vai virar uma tabela 
 public class Postagem {
 		
 	    @Id
-		@GeneratedValue(strategy = GenerationType.IDENTITY)	//Primary key	
+		@GeneratedValue(strategy = GenerationType.IDENTITY)				//Primary key	
 		
 		private long id;
 		
-		
-		//Não consigo colocar o NotNull e nem o Size
-	
-		
+	    @NotNull
+	    @Size(min = 5, max = 100)
+	    
+			
 		private String titulo;
+	    
+	    @NotNull
+	    @Size(min = 10, max = 500)
 				
 		
 		private String texto;
