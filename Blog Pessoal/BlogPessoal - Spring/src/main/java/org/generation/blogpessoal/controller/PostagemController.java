@@ -19,33 +19,33 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/postagem")
-@CrossOrigin("*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class PostagemController {
 
 		
-	@Autowired			//Serviço de injeção de dependência
+	@Autowired							//Serviço de injeção de dependência
 	private PostagemRepository repository;
 	
-	@GetMapping //Sempre que tiver uma requisição através de postagem vau disparar esse método
-	public ResponseEntity<List<Postagem>> GetAll() {
+	@GetMapping 						//Sempre que tiver uma requisição através de postagem vai disparar esse método
+	public ResponseEntity<List<Postagem>> getAll() {
 			return ResponseEntity.ok(repository.findAll());
 			
 	}
 	@GetMapping("/{id}")
-	public ResponseEntity<Postagem> GetById(@PathVariable long id){
+	public ResponseEntity<Postagem> getById(@PathVariable long id){
 		return repository.findById(id)
 				.map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 			
 	}
 	
 	@GetMapping("/titulo/{titulo}")
-	public ResponseEntity<List<Postagem>> GetByTitulo(@PathVariable String titulo){
-		return ResponseEntity.ok(repository.findAllByTituloContainIngIgnoreCase(titulo));
+	public ResponseEntity<List<Postagem>> getByTitulo(@PathVariable String titulo){
+		return ResponseEntity.ok(repository.findAllByTituloContainingIgnoreCase(titulo));
 		
 	}
 	
 	@PostMapping
-	public ResponseEntity <Postagem> post (@RequestBody Postagem postagem){
+	public ResponseEntity <Postagem> post (@RequestBody Postagem postagem){						//@RequestBody usado para recepcionar os dados
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(postagem));
 		
 	}
@@ -54,8 +54,8 @@ public class PostagemController {
 		return ResponseEntity.status(HttpStatus.OK).body(repository.save(postagem));
 		
 	}
-	@DeleteMapping("/{id}")
-	public void  delete(@PathVariable long id) {
+	@DeleteMapping("/{id}")																		//deleta um recurso no banco de dados
+	public void  delete(@PathVariable long id) {												//void porque não irá retornar nada
 		repository.deleteById(id);
 		
 	}
