@@ -1,2 +1,2 @@
-# MySQL_Generation
+# MySQL&Spring_Generation
 Projetos MySQL & Spring || Bloco II - Generation
