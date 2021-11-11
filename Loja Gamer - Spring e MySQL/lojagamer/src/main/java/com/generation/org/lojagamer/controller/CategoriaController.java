@@ -54,7 +54,7 @@ public class CategoriaController {
 	
 	@PutMapping
 	public ResponseEntity<CategoriaModel> putCategoria(@RequestBody CategoriaModel categoria){
-		return ResponseEntity.status(HttpStatus.OK).body(categoriaRepository.save(categoria));
+		return ResponseEntity.ok(categoriaRepository.save(categoria));
 	}
 	
 	@DeleteMapping("/{id}")

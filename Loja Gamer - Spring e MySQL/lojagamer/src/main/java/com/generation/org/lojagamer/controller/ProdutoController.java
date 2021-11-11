@@ -51,7 +51,7 @@ public class ProdutoController {
 	}
 	
 	@PutMapping
-	public ResponseEntity<ProdutoModel> putProduto(@Valid @RequestBody ProdutoModel produto) {
+	public ResponseEntity<ProdutoModel> putProduto(@Valid @RequestBody ProdutoModel produto) {   //ResponseEntity responde(com HTTP) a requisição que é mandada pelo o postman
 					
 		return produtoRepository.findById(produto.getId())
 				.map(resposta -> {
