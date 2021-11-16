@@ -9,7 +9,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "tb_produto")
+@Table(name = "tb_produtosLojaGamer")
 public class ProdutoModel {
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

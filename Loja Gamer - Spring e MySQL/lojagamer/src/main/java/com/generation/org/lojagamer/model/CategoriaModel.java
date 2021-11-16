@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 	
 	
 @Entity									 //anotação para "chamar" tabelas
-@Table (name = "tb_categorias")			 //anotação usada para definir o nome da tabela 
+@Table (name = "tb_categoriaLojaGamer")			 //anotação usada para definir o nome da tabela 
 public class CategoriaModel {
 	
 	@Id
