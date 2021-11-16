@@ -1,6 +1,4 @@
-package org.generation.blogpessoal.model;
-
-import java.util.Optional;
+package com.generation.org.lojagamer.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,8 +9,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "tb_usuario")
-
+@Table(name = "tb_usuariosLojaGamer")
 public class Usuario {
 
 	@Id
@@ -31,20 +28,20 @@ public class Usuario {
 	@Size(min = 6, max = 8, message = " O número mínimo de caracteres no campo senha é 6 e o máximo 8")
 	private String senha;
 
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
 	public long getId() {
 		return id;
 	}
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getUsuario() {
@@ -63,5 +60,4 @@ public class Usuario {
 		this.senha = senha;
 	}
 
-	
 }
