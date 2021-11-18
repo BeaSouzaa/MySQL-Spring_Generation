@@ -1,7 +1,5 @@
 package com.generation.org.lojagamer.model;
 
-
-
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -16,31 +14,26 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-
-
-	
-	
-@Entity									 //anotação para "chamar" tabelas
-@Table (name = "tb_categoriaLojaGamer")			 //anotação usada para definir o nome da tabela 
+@Entity // anotação para "chamar" tabelas
+@Table(name = "tb_categoria") // anotação usada para definir o nome da tabela
 public class CategoriaModel {
-	
+
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	private long id; 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
 
 	@NotBlank(message = "O campo nome é obrigatório!")
-	@Size(min = 5, max = 50, message = "A quantidade mínima de caracteres são 5 e no máximo 50" )
+	@Size(min = 5, max = 50, message = "A quantidade mínima de caracteres são 5 e no máximo 50")
 	private String nome_cat;
-	
+
 	@NotBlank(message = "O campo descrição  é obrigatório")
 	@Size(min = 5, max = 50, message = "A quantidade mínima de caracteres são 5 e no máximo 50 ")
 	private String descricao_cat;
-	
+
 	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("categoria")
 	private List<ProdutoModel> produto;
-	
-	
+
 	public long getId() {
 		return id;
 	}
@@ -72,7 +65,5 @@ public class CategoriaModel {
 	public void setProduto(List<ProdutoModel> produto) {
 		this.produto = produto;
 	}
-	
-	
-}
 
+}
