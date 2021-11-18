@@ -18,9 +18,6 @@ import com.generation.org.lojagamer.model.CategoriaModel;
 import com.generation.org.lojagamer.repository.CategoriaRepository;
 
 
-
-
-
 @RestController
 @RequestMapping("/categoria")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
