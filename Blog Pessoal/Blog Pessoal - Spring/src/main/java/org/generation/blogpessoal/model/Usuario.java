@@ -14,6 +14,8 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 @Table(name = "tb_usuario")
 
@@ -26,7 +28,8 @@ public class Usuario {
 	@NotBlank(message = "Ops! O campo nome não pode ficar vazio e nem conter espaço")
 	@Size(min = 3, max = 50, message = " O número mínimo de caracteres no campo nome é 3 e o máximo 50")
 	private String nome;
-
+	
+	@ApiModelProperty(example = "email@email.com.br")
 	@NotBlank(message = "Ops! O campo usuário não pode ficar vazio e nem conter espaço")
 	@Size(min = 2, max = 50, message = " O número mínimo de caracteres no campo usuário é 2 e o máximo 50")
 	private String usuario;
