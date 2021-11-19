@@ -24,7 +24,8 @@ import org.springframework.http.ResponseEntity;
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class UsuarioController {
+
+public class UsuarioController{
 
 	@Autowired
 	private TestRestTemplate testRestTemplate;
@@ -38,7 +39,7 @@ public class UsuarioController {
 	public void deveCriarUmUsuario() {
 
 		HttpEntity<Usuario> requisicao = new HttpEntity<Usuario>(
-				new Usuario(0L, "Beatriz Souza", "beasouza@gmail.com.br", "0957438"));
+				new Usuario(0L, "Paulo Antunes", "paulo_antunes@email.com.br", "13465278"));
 
 		ResponseEntity<Usuario> resposta = testRestTemplate.exchange("/usuarios/cadastrar", HttpMethod.POST, requisicao,
 				Usuario.class);
@@ -50,13 +51,14 @@ public class UsuarioController {
 
 	@Test
 	@Order(2)
-	@DisplayName("Não deve permitir duplicação do Usuário")
+	@DisplayName("Não permite usuário duplicado")
 	public void naoDeveDuplicarUsuario() {
 
-		usuarioService.cadastrarUsuario(new Usuario(0L, "Palmirinha", "Palmirinhaa@gmail.com.br", "983723"));
+		usuarioService
+				.cadastrarUsuario(new Usuario(0L, "Beatriz Souza", "beatrizgsouza.bgs@gmail.com", "090909090909"));
 
 		HttpEntity<Usuario> requisicao = new HttpEntity<Usuario>(
-				new Usuario(0L, "Palmirinha", "Palmirinha@gmail.com.br", "983723"));
+				new Usuario(0L, "Beatriz Souza", "beatrizgsouza.bgs@gmail.com", "67528278"));
 
 		ResponseEntity<Usuario> resposta = testRestTemplate.exchange("/usuarios/cadastrar", HttpMethod.POST, requisicao,
 				Usuario.class);
@@ -69,11 +71,10 @@ public class UsuarioController {
 	@DisplayName("Alterar um Usuário")
 	public void deveAtualizarUmUsuario() {
 
-		Usuario usuarioCreate = usuarioService
-				.cadastrarUsuario(new Usuario(0L, "Bolinha", "bolinhas@gmail.com.br", "0000000"));
+		Optional<Usuario> usuarioCreate = usuarioService
+				.cadastrarUsuario(new Usuario(0L, "Bolinha", "bolinha@outlook.com.br", "bolinha632"));
 
-		Usuario usuarioUpdate = new Usuario(usuarioCreate.getId(), "Bruna Oliveira", "BruOliveira@gmail.com.br",
-				"12345678");
+		Usuario usuarioUpdate = new Usuario(usuarioCreate.get().getId(), "Bolinha", "bolinha@gmail.com", "bolinha423");
 
 		HttpEntity<Usuario> requisicao = new HttpEntity<Usuario>(usuarioUpdate);
 
@@ -90,9 +91,9 @@ public class UsuarioController {
 	@DisplayName("Listar todos os Usuários")
 	public void deveMostrarTodosUsuarios() {
 
-		usuarioService.cadastrarUsuario(new Usuario(0L, "Silvino", "silvino@gmail.com.br", "0000123"));
+		usuarioService.cadastrarUsuario(new Usuario(0L, "Camila Zulian", "camila_zulian@email.com.br", "Camis432"));
 
-		usuarioService.cadastrarUsuario(new Usuario(0L, "Shrek", "shrek@gmail.com", "shrekefiona"));
+		usuarioService.cadastrarUsuario(new Usuario(0L, "Ayra Mahalla", "ayra_mahalla@email.com.br", "Mahalla123"));
 
 		ResponseEntity<String> resposta = testRestTemplate.withBasicAuth("root", "root").exchange("/usuarios/all",
 				HttpMethod.GET, null, String.class);
