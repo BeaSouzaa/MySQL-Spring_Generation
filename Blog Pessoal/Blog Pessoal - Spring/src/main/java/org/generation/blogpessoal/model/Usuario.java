@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -31,7 +32,7 @@ public class Usuario {
 	
 	@ApiModelProperty(example = "email@email.com.br")
 	@NotBlank(message = "Ops! O campo usuário não pode ficar vazio e nem conter espaço")
-	@Size(min = 2, max = 50, message = " O número mínimo de caracteres no campo usuário é 2 e o máximo 50")
+	@Email(message = "Por favor, insira o seu email!")
 	private String usuario;
 
 	@NotBlank(message = "Ops! O campo senha não pode ficar vazio e nem conter espaço")
